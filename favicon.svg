@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- White background -->
+  <rect width="32" height="32" fill="#FFFFFF"/>
+  <!-- Bold Z -->
+  <text x="8" y="24" font-family="Arial Black,'Arial Bold',Arial,sans-serif" font-size="22" font-weight="900" fill="#0D0D0D">Z</text>
+  <!-- Red dot -->
+  <circle cx="26" cy="23" r="3.5" fill="#E84040"/>
+</svg>
