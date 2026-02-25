@@ -44,7 +44,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 28px 80px;
+  padding: 60px 28px 36px;
   position: relative;
   overflow: hidden;
 }
@@ -296,64 +296,137 @@ a { color: inherit; text-decoration: none; }
 .code-interlude {
   display: flex;
   justify-content: center;
-  padding: 0 28px 40px;
+  padding: 0 28px 20px;
 }
-
-.code-wrap {
-  background: #111;
+.code-frame {
+  background: #070707;
   border: 1px solid rgba(255,255,255,.07);
-  padding: 22px 28px 20px;
-  max-width: 380px;
+  border-radius: 9px;
   width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(200,169,110,.05),
+    0 12px 60px rgba(0,0,0,.8),
+    0 0 120px rgba(200,169,110,.04);
   position: relative;
 }
-
-.code-wrap::before {
+.code-frame::after {
   content: '';
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(200,169,110,.3);
-  box-shadow: 14px 0 0 rgba(200,169,110,.15), 28px 0 0 rgba(200,169,110,.08);
-  margin-bottom: 16px;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,.05) 3px,
+    rgba(0,0,0,.05) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
 }
-
-.code-pre {
-  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+.cf-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 13px;
+  background: rgba(255,255,255,.02);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.cf-dot { width: 10px; height: 10px; border-radius: 50%; }
+.cf-red { background: #ff5f57; opacity: .75; }
+.cf-yel { background: #ffbd2e; opacity: .75; }
+.cf-grn { background: #28c840; opacity: .75; }
+.cf-tab {
+  font-family: 'SF Mono','Fira Code','Cascadia Code',monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,.22);
+  margin-left: 10px;
+  padding: 2px 9px;
+  background: rgba(255,255,255,.05);
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.06);
+  letter-spacing: .5px;
+}
+.cf-body { padding: 18px 16px 14px 12px; }
+.cf-lines {
+  font-family: 'SF Mono','Fira Code','Cascadia Code','Consolas',monospace;
   font-size: 12.5px;
-  line-height: 1.9;
-  color: rgba(239,239,236,.35);
-  white-space: pre;
-  margin: 0;
+  line-height: 1.85;
 }
-
-.cl { display: block; opacity: 0; animation: cl-in .35s ease forwards; }
-.cl:nth-child(1) { animation-delay: .4s; }
-.cl:nth-child(2) { animation-delay: .75s; }
-.cl:nth-child(3) { animation-delay: 1.1s; }
-.cl:nth-child(4) { animation-delay: 1.45s; }
-.cl:nth-child(5) { animation-delay: 1.8s; }
-@keyframes cl-in {
-  from { opacity: 0; transform: translateX(-4px); }
-  to   { opacity: 1; transform: translateX(0); }
+.cf-line {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 0 14px;
+  min-height: 1.85em;
 }
-
+.cf-ln {
+  font-size: 9px;
+  color: rgba(255,255,255,.1);
+  text-align: right;
+  padding-top: 2px;
+  user-select: none;
+}
+.cf-lt { white-space: pre; color: rgba(239,239,236,.75); }
 .ck { color: #c8a96e; }
-.cv { color: rgba(239,239,236,.75); }
-.cs { color: rgba(200,169,110,.65); }
-
-.code-cursor {
+.ct { color: rgba(200,169,110,.5); }
+.cs { color: rgba(200,169,110,.52); }
+.cm { color: rgba(255,255,255,.2); font-style: italic; }
+.cp { color: rgba(239,239,236,.38); }
+.cf-cursor {
   display: inline-block;
-  width: 6px;
-  height: 13px;
-  background: rgba(200,169,110,.5);
-  vertical-align: text-bottom;
+  width: 1.5px;
+  height: .85em;
+  background: var(--accent);
+  vertical-align: middle;
   margin-left: 1px;
-  animation: blink 1s step-end infinite;
-  opacity: 0;
-  animation-delay: 2.1s;
-  animation-fill-mode: forwards;
+  animation: cf-blink .7s step-end infinite;
+}
+@keyframes cf-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cf-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 13px;
+  border-top: 1px solid rgba(255,255,255,.04);
+  background: rgba(200,169,110,.025);
+}
+.cf-slang {
+  font-family: 'SF Mono','Fira Code',monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,.3);
+}
+.cf-sdot { color: rgba(255,255,255,.1); }
+.cf-smsg {
+  font-family: 'SF Mono','Fira Code',monospace;
+  font-size: 9px;
+  color: rgba(255,255,255,.15);
+  transition: color .6s;
+}
+
+/* ── SATURN ────────────────────────────────────────────── */
+.saturn-wrap {
+  position: relative;
+  height: 52vh;
+  min-height: 280px;
+  overflow: hidden;
+}
+.saturn-wrap img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: .32;
+}
+.saturn-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, var(--bg) 0%, transparent 22%, transparent 78%, var(--bg) 100%),
+    linear-gradient(to right, var(--bg) 0%, transparent 12%, transparent 88%, var(--bg) 100%);
 }
 
 /* ── CV ──────────────────────────────────────────────── */
@@ -596,6 +669,140 @@ a { color: inherit; text-decoration: none; }
   font-style: italic;
 }
 
+/* ── BOOK ───────────────────────────────────────────── */
+.book {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 28px 80px;
+  border-top: 1px solid var(--divider);
+}
+.book-eyebrow {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.book-title {
+  font-family: var(--serif);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.book-subtitle {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 52px;
+}
+.book-divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 44px 0;
+}
+.book-poem {
+  font-family: var(--serif);
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.9;
+  color: rgba(239,239,236,.8);
+  white-space: pre-line;
+  margin-bottom: 44px;
+}
+.book-poem-attr {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 20px;
+}
+.book-chapter-num {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.book-chapter-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.book-entry {
+  margin-bottom: 28px;
+}
+.book-entry p {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.85;
+  color: rgba(239,239,236,.75);
+}
+.book-date {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(200,169,110,.45);
+  margin-top: 8px;
+}
+.book-blockquote {
+  border-left: 2px solid rgba(200,169,110,.3);
+  padding: 4px 0 4px 18px;
+  margin: 28px 0;
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-style: italic;
+  color: rgba(239,239,236,.5);
+  line-height: 1.75;
+}
+.book-blockquote cite {
+  display: block;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,.4);
+  margin-top: 10px;
+}
+.book-scene {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+.book-dialogue {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(239,239,236,.7);
+  line-height: 2;
+}
+.book-dialogue strong {
+  color: rgba(239,239,236,.4);
+  font-style: italic;
+  font-weight: 400;
+}
+.book-formula {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: rgba(239,239,236,.5);
+  line-height: 2.2;
+  letter-spacing: 1px;
+  margin: 24px 0;
+  padding: 20px 24px;
+  border: 1px solid var(--divider);
+  text-align: center;
+}
+
 /* Philosophy */
 .cv-philosophy {
   font-family: var(--serif);
@@ -673,14 +880,27 @@ a { color: inherit; text-decoration: none; }
 
 <!-- CODE INTERLUDE -->
 <div class="code-interlude">
-  <div class="code-wrap">
-    <pre class="code-pre"><span class="cl"><span class="ck">const</span> <span class="cv">Z</span> = {</span><span class="cl">  <span class="ck">mode</span>:    <span class="cs">"build"</span>,</span><span class="cl">  <span class="ck">stack</span>:   <span class="cs">["AI", "language", "law"]</span>,</span><span class="cl">  <span class="ck">status</span>:  <span class="cs">"shipping"</span></span><span class="cl">};<span class="code-cursor"></span></span></pre>
+  <div class="code-frame">
+    <div class="cf-chrome">
+      <span class="cf-dot cf-red"></span>
+      <span class="cf-dot cf-yel"></span>
+      <span class="cf-dot cf-grn"></span>
+      <span class="cf-tab">manifesto.ts</span>
+    </div>
+    <div class="cf-body">
+      <div class="cf-lines" id="cfLines"></div>
+    </div>
+    <div class="cf-status">
+      <span class="cf-slang">TypeScript</span>
+      <span class="cf-sdot">·</span>
+      <span class="cf-smsg" id="cfStatus">initializing</span>
+    </div>
   </div>
 </div>
 
 <!-- WORK -->
 <section class="work" id="work">
-  <div class="section-eyebrow">Work &amp; Projects</div>
+  <div class="section-eyebrow">Active</div>
   <ul class="work-list">
 
     <li class="work-item">
@@ -992,12 +1212,644 @@ a { color: inherit; text-decoration: none; }
 
 </section>
 
+<!-- BOOK -->
+<section class="book">
+  <div class="book-eyebrow">Writing</div>
+  <h2 class="book-title">THE ROAD AHEAD</h2>
+  <div class="book-subtitle">An Answer to Our Deep Disquietudes</div>
+
+  <div class="book-poem">I AM IMMIGRANT
+
+I am from grey skies and rainy days,
+I am from Eton messes and earl greys,
+I am from Lambeth and classical sound,
+I am inbound; to Southbound.
+
+I am from Brixton; an immigrant melting pot,
+I am from London; represented by something I am not,
+I am from a gifted place, wrought with ownership,
+I am from the Union Jack, removed from censorship.
+
+I am from a hermit kingdom, predating pandemic,
+I am from a paradigm, the penultimate relic,
+I am from a place of positivism, plagued with nihilism,
+I am from a place of hope, commandeered by communism.
+
+I am from a place that lies, disseminating commiseration,
+I am from a place of truth, blossoming communication,
+I am from a place of peace, dying in incarceration,
+I am from a place of Red, burning like incineration,
+
+I am from a place that fears, the people it dragoons,
+I am from a place that cares, only for typhoons,
+I am from a place of tradition, soured by simplicity,
+I am from a place that loathes, its own toxicity.
+
+I am from city lights and busy streets,
+I am from polluted sights and corrupted seats,
+I am from low visibility and high commissary,
+I am from true misery turned necessary.
+
+I am from Hong Kong, for I am wrong,
+I am from skylines waned by the sickles' song,
+I am from laissez faire, they couldn't care...
+I am from a democracy; the hammer does not see.
+
+I am from the mainland, for I am right,
+I am from billions, lost in sight,
+I am from mist, draped by night,
+I am from darkness that trembles in light.
+
+I am from high humidity, low humility,
+I am from serenity, holy divinity,
+I am from the world, cast aside,
+For where I reside; fear does not preside.
+
+I am from freedom, a place that never dies,
+I am from opportunity, intolerant of guise,
+I am from light, the elixir of sin,
+I am liberty, I come from within.
+
+I am imminent, something you can't withstand,
+I am emigrant, someone you understand,
+I am migrant, coming from a foreign land,
+I am immigrant, fleeing from the motherland,
+    <div class="book-poem-attr">Do not commit to anyone or anything. ― Gaven Cheong</div>
+  </div>
+
+  <hr class="book-divider">
+
+  <div class="book-chapter-num">0.</div>
+  <div class="book-chapter-title">Genesis</div>
+
+  <div class="book-entry">
+    <p>Dear reader,</p>
+    <p style="margin-top:10px">The thoughts provided represent the closure to the most difficult time in my life.</p>
+    <p style="margin-top:10px"><em>*Pause for dramatic effect*</em></p>
+    <p style="margin-top:10px">&amp; An end to the worst year of my life – 2021. I hope you attain a sense of value in its contents.</p>
+    <p style="margin-top:10px">Formalities aside! Welcome to my metamorphosis.</p>
+    <p style="margin-top:10px">That is all, happy reading.</p>
+  </div>
+
+  <blockquote class="book-blockquote">
+    Appear weak when you are strong, and strong when you are weak.
+    <cite>― Sun Tzu</cite>
+  </blockquote>
+
+  <hr class="book-divider">
+
+  <div class="book-chapter-num">I.</div>
+  <div class="book-chapter-title">Ichiban</div>
+
+  <div class="book-entry">
+    <p>I hope you know this meeting (yes, between you &amp; I, specifically you reading these words dictum) is not by coincidence. Alone, we are alone. It is difficult. It is necessary.</p>
+    <div class="book-date">13 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>An absence of pain is not an absence of hardship. An absence of happiness is not an absence of bliss. When you come across your bridge, remember why you started. This book lays as testament to a will unsatisfied. I hope you attain some comfort knowing that I know this is going to be painful. Endurance is the end; the goal is the means. Working towards something manifests fulfillment in its truest form.</p>
+    <div class="book-date">13 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>I don't know if I'm gonna make it but I'm going to fucking try.</p>
+    <div class="book-date">14 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Greatness is a farrago of trivialities done really well. Yea, life is gonna continue to kick the shit outta you when you're down but don't worry just wait and gather your strength. When you're strong enough, pick yourself up, tap life on the back, and roundhouse kick that motherfucker in the face. No need to hit him while he's down either, just wait for him to get up again and put him back on his arse.</p>
+    <div class="book-date">15 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Balance &amp; moderation, that's all folks.</p>
+    <div class="book-date">16 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>New rule: Every week is the hardest week of your life.</p>
+    <div class="book-date">19 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Some people are so broke, all they have is money. But some people are so broke, no money is all they have. What we do in the dark, illuminates via an inevitable exposure to light, and echoes throughout eternity.</p>
+    <div class="book-date">20 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>All barriers fall eventually to the manifestation of a convicted will.</p>
+    <div class="book-date">21 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>You're not dead yet.</p>
+    <div class="book-date">25 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>We're still enslaved.</p>
+    <div class="book-date">27 / 10 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>As my power proliferates, yours diminishes. As I move ahead, you evanesce. As I aggrandize, you devolve. As I grow, you dwindle. As I live, you die.</p>
+    <div class="book-date">03 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>One moment at a time.</p>
+    <div class="book-date">08 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Is there meaning where this pain resides?</p>
+    <div class="book-date">09 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Love is not a word, it's an act.</p>
+    <div class="book-date">09 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Inimical.</p>
+    <div class="book-date">10 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Life is a farrago of complexities.</p>
+    <div class="book-date">12 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The ballerina presides within a domain in which she possesses plenary authority. She commands captivation as she ebulliently glides across her tacit jurisdiction.</p>
+    <div class="book-date">24 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>If ignorance is bliss, is it zest?</p>
+    <div class="book-date">30 / 11 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>You know, in your mind's eye, the right way forward, the question is, what presides to be in the way?</p>
+    <div class="book-date">01 / 12 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The happiest people, live the saddest lives.</p>
+    <div class="book-date">01 / 12 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>In losing yourself in the pursuit of excellence, you attain it.</p>
+    <div class="book-date">07 / 12 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>People change.</p>
+    <div class="book-date">08 / 12 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>They're not your friend if you have to go through the process. – Kenyohn Clark</p>
+    <div class="book-date">18 / 12 / 21</div>
+  </div>
+
+  <div class="book-entry">
+    <p>We are emotional creatures, yet our emotions deceive us.</p>
+    <div class="book-date">28 / 12 / 21</div>
+  </div>
+
+  <div class="book-entry book-dialogue">
+    <strong>Jamila Robertson —</strong> You wouldn't stand in here, you're too resistant.<br>
+    <strong>Achilles —</strong> To what?<br>
+    <strong>Jamila Robertson —</strong> The Oppression.
+    <div class="book-date">30 / 12 / 21</div>
+  </div>
+
+  <blockquote class="book-blockquote">
+    It is not death that a man should fear, but he should fear never beginning to live.
+    <cite>― Marcus Aurelius</cite>
+  </blockquote>
+
+  <hr class="book-divider">
+
+  <div class="book-chapter-num">II.</div>
+  <div class="book-chapter-title">No Time for Caution</div>
+
+  <div class="book-entry">
+    <p>When you force things upon people, they become rebellious. – Llewelyn Robertson</p>
+    <div class="book-date">04 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Never settle.</p>
+    <div class="book-date">06 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Momentum is everything.</p>
+    <div class="book-date">07 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Time will tell.</p>
+    <div class="book-date">07 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Life breeds life.</p>
+    <div class="book-date">18 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Stand still! Through patience, the path ahead is unveiled.</p>
+    <div class="book-date">20 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>When the fear of death presents itself to us in mind and body, we are most exposed. We realize the frailties of our individual faculties and autonomy – we are most aware that we are a living creature. Failure is apposite, as with death; entertaining the thought of it merely brings one, one step closer to it. It is only when we live our lives in the now, that is, when we realize we are life, not death, ambitious not frail, moving from failure not to, that we see the grave momentous nature inherent within the course of life is shown every day in our habitually individualized manifested epochs, which when universalized, simply display one's objective epoch and conferring world view. In this, we realize our world is the product of everyone and anything living. From this we arrive at the current state of affairs in our world; those we love, that we like, what we do … Which when confronted by the face of decay and the magnitude of death's swift yet fair definitive essence alarms us to caution — in the face of something that takes everything away, we retreat and flee to the idiosyncratic details of our lives that we are convinced, nay convicted believe possess meaning, simply for being constituent of a life, in which the fear of death, in its singing to our inhibitions, compels one to yield and entertain the thought that all that we do and see may no longer prevail to exist in the mere blink of an eye. I challenge you to stand, not for my sake, not for yours, but for all those who have succumbed to the threat in question, whether it be failure or death; such conceptual realities only aggrandize in the action and thought one takes to making such words a reality as opposed to atavistic folklore not suitable for the current time and will in which one expresses in her everyday travels and battering, nay clamoring of its petty and pesterous travails and vicissitudes. In cognizance of this, one finds that death possesses to only be a threat in her life and not a reality, as shown by her very existence serving testament to the fact. It is the fear of death that keeps us so intertwined with it, not the event of death itself. Fear is the wrecker of all dreams, it calls upon our disquietudes in such a calm manner that we are masqueraded by its inimical presence and dragooned to inaction over the fear of; Failure is the quelling of all action, that which mimics us into believing that the individual events in one's life course represent her inherent value and the inadequacies to perform in a manner that one believes they can, apposite to society and their respective life course that can render, in the sole instance, and the aggregate, one in a comatose state, simply due to the fact that playing dead as opposed to attempting to live already renders a deterministic outcome that, albeit negative is not uncertain, plagued by the illusion of hope, merely for one to fall in face of climbing the mountainous and precipitous terrain on the pursuit towards living a life of excellence that makes us feel as if; Death is the destroyer of life, the corroder of ideals, the numbing of sentience out of this particular existence, the domain of darkness for many and light for few; a penumbra for many more and a notion not entertained by those too affixed on what is happening in the very present now and very changeable future.</p>
+    <div class="book-date">27 / 02 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>What are you waiting for? No, seriously what the fuck are you waiting for? This prolonging of the inevitable, this sedentary immersion in virtual utopia, this sitting of nil, this submission to inadequacy, this procrastination of pain, this prognostication of nothing – presides to be an obstacle for many of us. It seems as if, by human nature, we are creatures that have a grave proclivity and affinity for delaying our societal, and more importantly, personal obligations. Why is it that our most focal of onuses, the ones that concern our very lives and the quality it will impact on others, is so easily drowned, in its importance, by the likes of an accumulation of seconds, transferred to an accumulation of minutes, transmogrified into a proliferation of hours, and transported into a great deal of time not doing shit and being comfortable with one's own implicit lack of drive to be something, let alone something of merit? The answer may be found to lay as testament to the inherently perfecting nature in society, rendered through a spatial-temporal lens, which quite adequately shows that 99% of the time, in literally everything we do, someone, one day, one moment, one time, have it what you will, has done the same thing arising interest or calling in your life, distinctly and quite concerningly, better. I challenge you to stand. Not for my sake. Not for yours. But for those who are better than you. It is this 1%, this existence of hope, a peak hole of light in the dark dwellings of our own personal caves that invokes us to entertain, nay pursue the thought that maybe we have a right to attempt to climb to the peak of our aspirations, whatever they may be … It is in the mutual exchange of the guards, the continual overtaking and undertaking of one another, the pitting of energy against energy to quell it only to see it be manifest again with an even greater light than before, scarred by notions of inadequacy and an existence suboptimal to those of a chosen or great few, that renders the constant commingling struggle between anyone and anything, everyone and everything, living or dead, the will to simply start an endeavor.</p>
+    <div class="book-date">02 / 03 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Why run? What is it you hide from? As people we tend to carry with us this view that every interrogative presides to determine a definitive finding. Our imaginations remain to be so brittle that whereof one walks across the murky weeds in chi his destination leads, thereof one fails to see the variegated manifested paths awaiting, nay inviting, a precocious eye to explore their endless possibilities – however for the common man such an inference will not, for the sake of pride, look beneath himself. Whereof one cannot see, thereof one cannot know.</p>
+    <div class="book-date">02 / 03 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Hear me now and listen closely. Do not mistake my kindness for weakness. Do not make a pariah out of me, do not poor gasoline into the fire of ambition my heart possess a perpetual depth for. Everything, anything; everyone, yes that means you too, is within reach of my gaze, if you seek to take advantage of my abilities and proclivity for altruism that is your choice, but do not expect an absence of retaliation. If you are going to poke the bear, make sure you stick it.</p>
+    <div class="book-date">03 / 03 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The greatest gift to those who surround you is given in your striving to be your best. This pursuit intrinsically yet ironically confers immeasurable value to none other than you, while also conferring correlative value to those around you who choose to do with that gift what they will. Whether it be something that gifts immeasurable or minimal value, incremental or unquantifiable utility, its existing serves the interests of both oneself and those around her — in being the gift of moving, or at least attempting to take steps closer towards the illusory end of human perfectionism via both an independent and universal means of introspection and extrospection for the virtue in the Aristotelian concept's virtue within its contents.</p>
+    <div class="book-date">03 / 03 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>History Can Be Rewritten. – John Bennett Woodard II</p>
+    <div class="book-date">03 / 10 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Who knew? – John Bennett Woodard III</p>
+    <div class="book-date">03 / 07 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Once your curiosity dies, you die.</p>
+    <div class="book-date">03 / 07 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Our curiosity carries with it a spotlight. The size of it only to be determined by the extent in which our curiosity stretches. Many of us, in fear of being laughed at, or plainly booed off stage for our failure to entertain those at the destination in which our curiosity extends proceed to call in the show early, or perhaps never cue rolling the film at all. If one is to be truly curious, he must first embrace all that comes with the spotlight; he must learn to dance, he must step up to the call to Action! The ballerina only presides to pirouette because of her resolve and trust in herself and her capabilities. One may have to learn to crawl before one can stand, but one certainly must learn to cultivate the fruits of curiosity before feasting in its spotlight.</p>
+    <div class="book-date">03 / 13 / 22</div>
+  </div>
+
+  <blockquote class="book-blockquote">
+    Insanity is doing the same thing over and over expecting different results.
+    <cite>— Albert Einstein</cite>
+  </blockquote>
+
+  <div class="book-entry">
+    <p>Perhaps Einstein, perhaps. I suppose Einstein viewed the opinions of gamblers, lottery ticket holders, and those prone to exiting and re-entering rehabilitation clinics to be a chimera fit for making sense of some substance only in the minds of those due for occupying mental asylums. Our travels present the vermiculated swaying's of the mind and our current state of affairs proffering an alternative account — one this genius solicits in defiance of the smaller than ordinary Einsteinian mind. Yes, it may be true in a variety of occasions that attempting to do the same procedure repeatedly for purposes of attaining different outcomes may damn well prove to be the ironically incognizant crux belonging to those who are truly insane, if not medically accredited or de jure — Einsteinian merited, de facto, and approved by those of common mind and being. However, if you are repeatedly striving to reach the apex of your desired callings and abilities fret not, this saying need not have applicability nor force to the state of your mental composition or probability of success in your future endeavors. Failure as with everything, is apposite, subject to circumstances the mind may or may not foresee. The confrontation of an obstacle in the road, albeit an inconvenience, may attain unmitigated convenience when viewed ex post facto in the full scale of the life course; for it is the curiosity and the expanding of the limelight we attain, whether we seek it or not, in the pursuit of continually perfecting ourselves and the quality of what our lives present to the everchanging tables of community and history that have been worn down since the genesis of deaths ineluctable presence. Sometimes it is in the repetition of the same action time and time again in hopes of attaining a different result that sparks the rare, rutilant fire one needs in discovering success. I question — what is the difference between the man who strikes at a tree a thousand times in the same spot and the one who strikes a thousand in a different spot? Well, one will eventually bring the damned thing down. Perhaps if we changed our course of trajectory, the now discovered epiphanies and revelations in our lives as a result of our dogmatic and unproven ways would have never surfaced in our minds due to our unfettered disposition to give up the cause in the name of sanity. I challenge you to repeat, not for my sake, not for yours, but for all those who believe they are fighting a losing battle, nay worthy cause. Albert, in the pursuit of excellence one need not confer time to ponder how he may change his strategy, he needs just try and try again.</p>
+    <p style="margin-top:14px; letter-spacing:2px; font-style:italic; color:rgba(200,169,110,.6)">E = mc²</p>
+    <p style="margin-top:8px">Energy and mass as with insanity and genius … are very much interchangeable … after all.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Find yourself presiding to be surrounded in an air of objectivity. Flee from the illusions of personal comfort and imminent gratification. Why be content when you can be contentious? Why conform when you can contrast? Why preserve when you can perverse? Why acquiesce when you can rebel? Why collaborate when you can conspire? Why settle when you can raise? In the pursuit of truth, one must avert to caution in seeking for veritas and not finding its tempestuous &amp; arid cousin it presides to be anathema to verisimilitude. In plain English … Don't Fake It. Just Make It.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Avail yourself to the thoughts of those around you, pluck the fruits of their labor and drink in adoration of the existence of what we may perceive to be other minds. Does everybody love you? Are you the most liked person in your shanty town? Are you Captain Popular? No? Do people loathe you? Avoid you out of fear of actually having to converse with you in the act of exchanging sentences and interchanging awkward body gestures and stiff hand signs? Either way, a healthy medium would infer that you're doing something correct. The sad reality is that no one is liked by everyone, the conferred illusion of its appearance can be a hard pill to swallow by those thoroughly convinced that their adequacies and idiosyncratic layman phenomena and habits are the envy and adoration of all lucky enough to inhabit a view. Irrespective of the ratio or proportionality in the number of people you have around you that want you to succeed and those that want you to fail; both infer that you are doing something right and quite effectively too. The enemy of my enemy is my friend; the friend of my friend is my friend — we are all simply moving through this bubble of space and time in which we call life. Define Yourself.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>How do you carry yourself? Are you self-aware? Do you hold yourself to a certain standard? A degree of personal excellence? Is there light in your eyes? Is your soul pulchritudinous or entrenched in sinusoidal sin? Do you command improvement from those around you? Move outside of your mind and body — do you attain a sense of inspiration from what you see? The objective of philosophy, if you will, may be posed in the question: why are we even here? The answer: to build. We've inherited an inadequate world, one whose inadequacies are not to be completely quelled but alleviated through the most viable means possible. Onwards to victory. Leave nothing within or out of reach.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>If you ain't got logic, you ain't got shit.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>They will destroy you even when there presides to be nothing to destroy.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>How long? How long will you last surrounded by the unfettering views that accompany that gleaming light? No matter how long you last, there ain't nothing black and white Americans hate more than a nigga dancing in the spotlight who knows he can dance. Ain't nothing we hate more, than a nigga who knows he's fucking brilliant.</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Out of order. – Wayne Moore</p>
+    <div class="book-date">03 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Simple sells, complex compels.</p>
+    <div class="book-date">03 / 15 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Don't ask the question if you don't wanna know the fucking answer. – Shelby Sines Neal</p>
+    <div class="book-date">03 / 16 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>THE LINE IS BREAKING. – Eyram Awittor-Awuma</p>
+    <div class="book-date">03 / 18 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>By any means necessary.</p>
+    <div class="book-date">03 / 21 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Is the source of your happiness artificial? Is the most awaited part of your day an influx of dopamine from something that deprives you of your liberty in the definitive scheme? Why? Why is your Y satisfied by an inimical X? Alas, we have made our swift return to the initial query. It is necessary to elucidate just what an artificial fix proclaims and purportedly professes to be. If X is something that one can instrumentally use to positively attain a sense of happiness, then [X] may be the term for something that one instrumentally uses negatively to attain a sense of happiness. For simplicity, let us make happiness equal to Y. [X] are means used to attain the immediate sense of Y through a sense of instant gratification or harmful ways. In using [X] as a means to attain happiness one does not actually attain Y but more so, [Y] — the sense of happiness derived is attained in an instance, and presumably gone by tomorrow. Masquerading itself in efficiency and effectiveness, it dragoons us to turn over our souls for our inability to sit still, simply because we let it.</p>
+    <div class="book-date">03 / 23 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Habits maketh man. Conscribe your need to imbibe, quell your impel to inhale, prevaricate the imposition to pontificate your resolute disposition to madness; instead, postulate for a moment, supplant from the desire to be an exponent, nay withdraw from your claim to a throne possessed by a proponent of a faith satiated in beliefs presiding to be invidious, inimical, iniquitous, and utterly improprietous in nature so much so that such beliefs have consistently convicted you to the cause that their being is inevitable, irrevocable, and utterly inexorable — rendering you intransigent to the introducing of an incompatible, independent, disparate yet all too enlightened view that you can, nay will overcome the personal struggles and vicissitudes accompanying a true transmutational transformation bringing with it the transfiguration &amp; metamorphosis that awaits one, if he can only, for the sake of God and himself, get out of his own damned ways and behold that which is truly his: insusceptible freedom.</p>
+    <div class="book-date">03 / 24 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>How does one appear cooler than the coolest person in the room? The try-hard effect. Try your hardest and you won't have to worry about how things appear; they simply are. When you try your hardest in anything you do, it will individually render you the coolest person to whom it matters the most: yourself, irrespective if anyone else actually takes account of such, it doesn't bloody matter as long as you know within yourself that anytime you are conscribing to the try-hard effect — that is the pursuit of excellence to the very height of your affinities and aptitude — you will succeed in being the coolest person in the room irrespective of whether anyone knows it or not. The second that pen hits the paper, my hands the keyboard, the shit — the fan, if you will — I know it's game. Everyone else doesn't matter, nothing does — just me simply knowing that I tried my hardest.</p>
+    <p style="margin-top:10px; color:rgba(200,169,110,.5); font-style:italic">killed that shit bruh. — Gabriel Robertson (2020)</p>
+    <div class="book-date">03 / 24 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>In seeking to enter the professional world, do not concern yourself with how much a job enables you to earn, but rather how many birds it kills with a lone stone.</p>
+    <div class="book-date">03 / 24 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>In trying, you are becoming.</p>
+    <div class="book-date">03 / 26 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Every action has its consequent reaction.</p>
+    <div class="book-date">04 / 02 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Racism is not a word.</p>
+    <div class="book-date">04 / 02 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>I grow restless, unable to sit amidst my thoughts in fear of an unmitigated assail on my morale and stature in which I carry myself throughout the day. A little leaven, leaveneth the whole lump — Corinthians 5:6 — it's bloody true, an inimical veridical, an elemental truth. We must question, when does the sabbatical become fanatical? More importantly, when does the veridical become inimical? Alone. We are alone. It is difficult. It is necessary. I am the product of my world and everything within. Like many of you brave enough to continue the muddled trails of thoughts dictum here, I have grown weary and dreary, dissatisfied and classified, closed off if you will to the outside world. I am weak, for now. You can smell it can't you? Something must have happened — his sentences are lacking that usual verbosity, his words are falling from might like light in night. The effect is quite a precarious one, the end must be near for this one, we can after all only endeavor for so long before we kneel before our fate: the ability to feel.</p>
+    <div class="book-date">04 / 14 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Truth is made, not sought.</p>
+    <div class="book-date">04 / 18 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The man who knows his weaknesses is an inviolable foe.</p>
+    <div class="book-date">04 / 28 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>I believe that my world is the product of my experiences. Everything within interaction, everything that has blessed to me the gift of its exposure is responsible for the way in which I perceive &amp; conceive of all this to be exposed, in time. My experiential interaction then, ex post facto, confers a viewpoint in my respective cerebrum that I get to call "mine." From this, we ask ourselves "yes but why does any of this matter in the plenary scheme of things?" Well, my curious friend, our inquisition leads us down the path of precipitous terrain many fear to trail. The object of philosophy if you will may be posed in the question akin to: why are we even here? The answer: to build. We've inherited an inadequate world, one whose inadequacies are not to be completely quelled but alleviated through the most viable means possible — one that appreciates the true sagacity of the human spirit, the pursuit of excellence. We may not be able to eradicate all human inadequacy out of the picture, but that ought not prevent us from the attempt of becoming something in which one is quite inherently &amp; paradoxically not — clear of inadequacy. Every moment that passes unveils humanity's resistance to its own futility; plainly put we will not stop; we will not be overcome. For there is simply nothing as quintessentially entwined with the human spirit as the property of progress.</p>
+    <div class="book-date">04 / 27 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Actions possess a consequent reaction but what of inaction? Procedural safeguards may be detrimental to the extent in which one's constitutional framework procures democracy over liberty, privacy over autonomy, protection over initiative, artificiality over reality.</p>
+    <div class="book-date">05 / 02 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Be impenetrable. Conscript yourself to a life of incremental refinement. The rhythm will find itself, it is after all, the property of progress.</p>
+    <div class="book-date">05 / 04 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Action is word.</p>
+    <div class="book-date">05 / 19 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Do not cover his eyes, for they do not deceive him. The horrors of our world ought to pull forth from him the courage, nay the onus to equip himself with the necessary tools at his disposal to quell the tasks too difficult for those who have come before him to solve, or to fall, and be corroded by such vicissitudes. Survive, then thrive; in attempting to stay afloat, we pull within us the strength, nay the audacity, to fly.</p>
+    <div class="book-date">05 / 20 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>It will fall. It must.</p>
+    <div class="book-date">05 / 26 / 22</div>
+  </div>
+
+  <blockquote class="book-blockquote">
+    To be is to deceive.
+    <cite>― Alan Watts</cite>
+  </blockquote>
+
+  <hr class="book-divider">
+
+  <div class="book-chapter-num">IIS.</div>
+  <div class="book-chapter-title">The Waltz</div>
+
+  <div class="book-scene">[ Montgomery County Jail, VA, USA. ]<br>Achilles arrested for "INTOXICATION IN PUBLIC" — Code Section 18.2-388 — May 29th, 2022</div>
+
+  <div class="book-entry book-dialogue">
+    <strong>Female Officer —</strong> Where he's from, they start drinking in the womb.<br>
+    <strong>Male Officer —</strong> What do you want to be when you get out of here?<br>
+    <strong>Achilles —</strong> A lawyer.<br>
+    <strong>Male Officer —</strong> Good luck.<br>
+    <strong>Achilles —</strong> Thank you.<br>
+    <strong>Officer —</strong> You keep getting drunk in public and you're not going to get into Harvard law.
+    <div class="book-date">05 / 29 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>Evolve yourself beyond the dimensions in which you are exposed, in doing so you embody the reaffirmation of the body's subconscious preservation, when the duality between mind and body meets for purposes of fortified preservation, the self is ineluctable to physical, manifest, and transcendental, not yet manifest, both thought and object.</p>
+    <div class="book-date">05 / 31 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The right to consciousness is inalienable.</p>
+    <div class="book-date">06 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>At some point, you gotta stop. – Shelby Neal</p>
+    <div class="book-date">06 / 15 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The shackles are off! The phoenix rises! – Shelby Neal</p>
+    <div class="book-date">07 / 01 / 22</div>
+  </div>
+
+  <div class="book-entry">
+    <p>The calling to confront a new endeavor carries with it feelings of initial angst and uncertainty in fighting the task ahead. Do not fret. As you lunge in for your first assault it may seem daunting that your target may see it coming, fret not, for we see his counter and have already prepared the course of action needed to quell the presence of such an innocuous threat veiled in invidious iniquity. As the fight progresses, you realize that while it may be painful to endure, you have already done so. The longer the preservation, the greater the entanglement; the greater the pain, the higher the tolerance; the more prominent the threshold, the deeper the cause. The incoming and proliferating barrage of fists calls to you to increase your own frequency until alas! Inevitably one finds his rhythm in the depths of pain, it calls upon you to numb yourself to infirmity. To have rhythm, is to have complete control.</p>
+    <p style="margin-top:14px">I have always loved classical music; Mozart's Eine Kleine Nachtmusik provoked one of my earliest memories of appreciation for the classical sound. A sense of sophistication that felt inherently unbecoming of me. Understandably, for many, they prefer the tune of silence to an arduous task. These are what I find to be the requisites for a life fulfilled — it is through our likes and idiosyncrasies that we play the music to our progress, the beat to the drum, the tune to our accomplishments, the song of our life. Philosophy and classical music have always touched my being and in doing so transitioned the flame of my volition strong enough for a sense of culmination between waltz and rhythm through progress furrowing me to attain a sense of peace. Life after all is nothing but a waltz between you and the shadow that lurks beneath.</p>
+  </div>
+
+  <div class="book-formula">
+    <div style="letter-spacing:2px; color:rgba(200,169,110,.7); margin-bottom:12px; font-size:12px; text-transform:uppercase">The Volitional Waltz</div>
+    [Philosophical Classicism] = X = (Instrumental)<br>
+    +<br>
+    [Individual Will] = Y = (Intrinsic)<br>
+    +<br>
+    [Progress in Rhythm]<br>
+    =<br>
+    [Fulfillment of Purpose]<br>
+    =<br>
+    <span style="color:var(--ink); font-size:15px; letter-spacing:4px">Meaning.</span>
+    <div class="book-date" style="margin-top:16px; text-align:center">07 / 05 / 22</div>
+  </div>
+
+</section>
+
+<!-- SATURN -->
+<div class="saturn-wrap">
+  <img src="saturn.jpg" alt="">
+  <div class="saturn-vignette"></div>
+</div>
+
 <!-- SIGN-OFF -->
 <footer class="signoff">
   <div class="signoff-text">auf Wiedersehen.</div>
 </footer>
 
 <script>
+// ── CODE TYPEWRITER ───────────────────────────────────────────────
+(function(){
+  var EL = document.getElementById('cfLines');
+  var ST = document.getElementById('cfStatus');
+  if (!EL) return;
+
+  // Lines: array of segments {c: className, t: text} or null for blank line
+  var LINES = [
+    null,
+    [{c:'cm',t:'// zacharia.ai \u2014 manifesto.ts'}],
+    null,
+    [{c:'ck',t:'const '},{c:'',t:'Z'},{c:'ct',t:': Builder'},{c:'cp',t:' = {'}],
+    [{c:'',t:'  '},{c:'cp',t:'from:  '},{c:'',t:' '},{c:'cs',t:'["London",\u00a0"HK",\u00a0"NYC"]'},{c:'cp',t:','}],
+    [{c:'',t:'  '},{c:'cp',t:'builds:'},{c:'',t:' '},{c:'cs',t:'["Aliss",\u00a0"Wordixon",\u00a0"GOG"]'},{c:'cp',t:','}],
+    [{c:'',t:'  '},{c:'cp',t:'stack: '},{c:'',t:' '},{c:'cs',t:'["LLMs",\u00a0"language",\u00a0"law"]'},{c:'cp',t:','}],
+    [{c:'',t:'  '},{c:'cp',t:'mode:  '},{c:'',t:' '},{c:'cs',t:'"perpetual motion"'}],
+    [{c:'cp',t:'}'}],
+    null,
+    [{c:'',t:'Z.'},{c:'ck',t:'ship'},{c:'cp',t:'()'},{c:'cm',t:'  // still running \u220e'}],
+  ];
+
+  // Build DOM structure (all lines, initially empty)
+  var ltEls = [];
+  var lnum = 1;
+  for (var i = 0; i < LINES.length; i++) {
+    var row = document.createElement('div');
+    row.className = 'cf-line';
+    var ln = document.createElement('div');
+    ln.className = 'cf-ln';
+    ln.textContent = LINES[i] !== null ? lnum++ : '';
+    var lt = document.createElement('div');
+    lt.className = 'cf-lt';
+    row.appendChild(ln);
+    row.appendChild(lt);
+    EL.appendChild(row);
+    ltEls.push(lt);
+  }
+
+  // Blinking cursor node
+  var cur = document.createElement('span');
+  cur.className = 'cf-cursor';
+
+  var li = 0, si = 0, ci = 0;
+
+  function spd(seg) {
+    if (!seg) return 80;
+    if (seg.c === 'cm') return 20;
+    if (seg.c === 'cs') return 16;
+    return 13;
+  }
+
+  function tick() {
+    // Blank line
+    if (LINES[li] === null) {
+      if (cur.parentNode) cur.parentNode.removeChild(cur);
+      li++; si = 0; ci = 0;
+      if (li >= LINES.length) { finish(); return; }
+      setTimeout(tick, 55);
+      return;
+    }
+
+    var line = LINES[li];
+    var ltEl = ltEls[li];
+
+    // End of line
+    if (si >= line.length) {
+      if (cur.parentNode) cur.parentNode.removeChild(cur);
+      li++; si = 0; ci = 0;
+      if (li >= LINES.length) { finish(); return; }
+      setTimeout(tick, 110);
+      return;
+    }
+
+    var seg = line[si];
+
+    // Start of line: move cursor
+    if (si === 0 && ci === 0) {
+      ltEl.appendChild(cur);
+      if (ST) ST.textContent = 'typing\u2026';
+    }
+
+    // Find or create span for this segment
+    var span = ltEl.querySelector('[data-si="'+si+'"]');
+    if (!span) {
+      span = document.createElement('span');
+      span.setAttribute('data-si', si);
+      if (seg.c) span.className = seg.c;
+      ltEl.insertBefore(span, cur);
+    }
+
+    span.textContent = seg.t.slice(0, ci + 1);
+    ci++;
+
+    if (ci >= seg.t.length) {
+      si++; ci = 0;
+      setTimeout(tick, si < line.length ? spd(line[si]) : 90);
+    } else {
+      setTimeout(tick, spd(seg));
+    }
+  }
+
+  function finish() {
+    // Place cursor at end of last content line
+    var last = ltEls[ltEls.length - 1];
+    last.appendChild(cur);
+    if (ST) {
+      ST.textContent = 'running \u2713';
+      ST.style.color = 'rgba(200,169,110,.45)';
+    }
+  }
+
+  setTimeout(tick, 900);
+})();
+
 // ── PARTICLE CONSTELLATION ───────────────────────────────────────
 (function(){
   const canvas = document.getElementById('heroCanvas');
