@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zacharia.ai</title>
+<meta name="description" content="Zacharia — builder, founder, AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0c0c0c;
+    --bg2: #141414;
+    --ink: #f0f0ed;
+    --muted: #888;
+    --accent: #e05a2b;
+    --divider: rgba(255,255,255,.08);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HERO ───────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 10vw, 120px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--ink);
+    min-height: 1.15em;
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-name .ai-suffix {
+    color: var(--accent);
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.85em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    margin-left: 3px;
+    animation: blink 1s step-end infinite;
+  }
+
+  .cursor.typing { animation: none; opacity: 1; }
+
+  @keyframes blink { 0%, 100% { opacity: 1 } 50% { opacity: 0 } }
+
+  .hero-tagline {
+    margin-top: 28px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .hero-tagline.visible { opacity: 1; transform: translateY(0); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    cursor: pointer;
+  }
+
+  .hero-scroll.visible { opacity: 1; }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── SECTION BASE ───────────────────────────────── */
+  section { padding: 100px 24px; max-width: 860px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--divider);
+    margin-bottom: 60px;
+  }
+
+  /* ── BIO ────────────────────────────────────────── */
+  .bio-text {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(240,240,237,.8);
+    max-width: 680px;
+  }
+
+  .bio-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── PROJECTS ───────────────────────────────────── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--divider);
+    border: 1px solid var(--divider);
+    margin-top: 8px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 36px 32px;
+    transition: background 0.2s;
+    cursor: pointer;
+    display: block;
+  }
+
+  .project-card:hover { background: #1c1c1c; }
+
+  .project-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .project-link {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+
+  .project-card:hover .project-link { gap: 10px; }
+
+  /* ── LINKS ──────────────────────────────────────── */
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--divider);
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--divider);
+    transition: opacity 0.2s;
+    cursor: pointer;
+  }
+
+  .link-item:hover { opacity: 0.6; }
+
+  .link-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .link-handle {
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .link-arrow {
+    font-size: 18px;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+
+  .link-item:hover .link-arrow { transform: translate(4px, -4px); }
+
+  /* ── FOOTER ─────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--divider);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ── FADE-IN ON SCROLL ──────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 600px) {
+    section { padding: 72px 20px; }
+    .project-card { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-name" id="heroName"><span class="cursor typing" id="cursor"></span></div>
+  <div class="hero-tagline" id="heroTagline">Builder &nbsp;·&nbsp; Founder &nbsp;·&nbsp; AI</div>
+  <div class="hero-scroll visible" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+    <span>scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</div>
+
+<!-- BIO -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="section-divider"></div>
+  <p class="bio-text reveal">
+    I build things at the intersection of <strong>AI and media</strong>.
+    Creator of <strong>Aliss</strong> — the world's first fully autonomous AI publication —
+    and <strong>Wordixon</strong>, a language learning platform.
+    Based at the frontier.
+  </p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <div class="section-divider"></div>
+  <div class="projects-grid reveal">
+
+    <a class="project-card" href="https://aliss.ai" target="_blank" rel="noopener">
+      <div class="project-tag">AI · Media</div>
+      <div class="project-name">Aliss</div>
+      <div class="project-desc">The world's first fully autonomous AI news publication. Covers the AI arms race — written, edited and published entirely by AI in real time.</div>
+      <div class="project-link">Visit Aliss <span>→</span></div>
+    </a>
+
+    <a class="project-card" href="https://wordixon.com" target="_blank" rel="noopener">
+      <div class="project-tag">AI · Language</div>
+      <div class="project-name">Wordixon</div>
+      <div class="project-desc">A language learning platform built for the way people actually learn — short, sharp, video-first. Powered by AI.</div>
+      <div class="project-link">Visit Wordixon <span>→</span></div>
+    </a>
+
+  </div>
+</section>
+
+<!-- LINKS -->
+<section id="links">
+  <div class="section-label">Find me</div>
+  <div class="section-divider"></div>
+  <div class="links-list reveal">
+
+    <a class="link-item" href="https://github.com/zrobertson350-boop" target="_blank" rel="noopener">
+      <span class="link-name">GitHub</span>
+      <span class="link-handle">zrobertson350-boop</span>
+      <span class="link-arrow">↗</span>
+    </a>
+
+    <a class="link-item" href="https://twitter.com/" target="_blank" rel="noopener">
+      <span class="link-name">X / Twitter</span>
+      <span class="link-handle">@zacharia</span>
+      <span class="link-arrow">↗</span>
+    </a>
+
+    <a class="link-item" href="mailto:hello@zacharia.ai">
+      <span class="link-name">Email</span>
+      <span class="link-handle">hello@zacharia.ai</span>
+      <span class="link-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Zacharia &nbsp;·&nbsp; zacharia.ai</span>
+</footer>
+
+<script>
+// ── TYPING ANIMATION ─────────────────────────────────────────────────
+(function(){
+  const nameEl = document.getElementById('heroName');
+  const cursor = document.getElementById('cursor');
+  const tagline = document.getElementById('heroTagline');
+
+  // Full sequence: type "Zachariah", delete "h", type ".ai"
+  const base   = 'Zacharia';
+  const full   = 'Zachariah';      // what we type first
+  const suffix = '.ai';            // what we type after deleting
+
+  let text = '';
+  let phase = 'type-full';        // type-full → pause → delete-h → type-suffix → done
+  let i = 0;
+
+  const SPEED_TYPE   = 95;
+  const SPEED_DELETE = 65;
+  const PAUSE_AFTER  = 900;
+  const PAUSE_DONE   = 400;
+
+  function render() {
+    // Clear and rebuild
+    nameEl.innerHTML = '';
+    const textNode = document.createTextNode(text);
+    nameEl.appendChild(textNode);
+
+    if (phase === 'done') {
+      // Wrap the suffix in accent colour
+      const plain = document.createTextNode(base);
+      const accent = document.createElement('span');
+      accent.className = 'ai-suffix';
+      accent.textContent = suffix;
+      const cur = document.createElement('span');
+      cur.className = 'cursor';
+      nameEl.innerHTML = '';
+      nameEl.appendChild(plain);
+      nameEl.appendChild(accent);
+      nameEl.appendChild(cur);
+    } else {
+      const cur = document.createElement('span');
+      cur.className = 'cursor typing';
+      nameEl.appendChild(cur);
+    }
+  }
+
+  function tick() {
+    if (phase === 'type-full') {
+      if (i < full.length) {
+        text = full.slice(0, ++i);
+        render();
+        setTimeout(tick, SPEED_TYPE + Math.random() * 30);
+      } else {
+        phase = 'pause';
+        render();
+        setTimeout(tick, PAUSE_AFTER);
+      }
+
+    } else if (phase === 'pause') {
+      phase = 'delete-h';
+      tick();
+
+    } else if (phase === 'delete-h') {
+      // Delete just the last character (the 'h')
+      text = text.slice(0, -1);
+      render();
+      phase = 'type-suffix';
+      i = 0;
+      setTimeout(tick, SPEED_DELETE);
+
+    } else if (phase === 'type-suffix') {
+      if (i < suffix.length) {
+        text = base + suffix.slice(0, ++i);
+        render();
+        setTimeout(tick, SPEED_TYPE + Math.random() * 25);
+      } else {
+        phase = 'done';
+        render();
+        setTimeout(() => {
+          tagline.classList.add('visible');
+        }, PAUSE_DONE);
+      }
+    }
+  }
+
+  // Start after a short delay
+  setTimeout(tick, 600);
+})();
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────────
+(function(){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+</body>
+</html>
