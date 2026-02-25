@@ -848,7 +848,52 @@ a { color: inherit; text-decoration: none; }
 .music-section {
   max-width: 680px;
   margin: 0 auto;
-  padding: 72px 28px 56px;
+  padding: 48px 28px 56px;
+}
+
+/* ── LAPTOP STORY ───────────────────────────────────────────────── */
+.laptop-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 28px 72px;
+  border-top: 1px solid var(--divider);
+}
+.laptop-eyebrow {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,.45);
+  margin-bottom: 16px;
+}
+.laptop-title {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.laptop-body {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.9vw, 18px);
+  line-height: 1.85;
+  color: rgba(239,239,236,.72);
+}
+.laptop-body p { margin-bottom: 18px; }
+.laptop-body p:last-child { margin-bottom: 28px; }
+.laptop-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 4px;
+}
+.laptop-specs span {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,.4);
 }
 .music-eyebrow {
   font-family: var(--sans);
@@ -2097,12 +2142,6 @@ I am immigrant, fleeing from the motherland,
 
 </section>
 
-<!-- SATURN -->
-<div class="saturn-wrap">
-  <img src="saturn.jpg" alt="">
-  <div class="saturn-vignette"></div>
-</div>
-
 <!-- MUSIC -->
 <section class="music-section">
   <div class="music-eyebrow">Listening</div>
@@ -2152,6 +2191,46 @@ I am immigrant, fleeing from the motherland,
       <div class="music-note">∞</div>
     </a>
 
+    <a class="music-track" href="https://www.youtube.com/results?search_query=Handel+Sarabande+Suite+D+minor+HWV+437" target="_blank" rel="noopener">
+      <div class="music-num">05</div>
+      <div class="music-body">
+        <div class="music-composer">George Frideric Handel</div>
+        <div class="music-title">Sarabande in D minor</div>
+        <div class="music-detail">Suite HWV 437 · IV. Sarabande<br>Four bars repeated until the weight of them becomes unbearable. Grief as structure.</div>
+      </div>
+      <div class="music-note">∞</div>
+    </a>
+
+    <a class="music-track" href="https://www.youtube.com/results?search_query=Handel+Passacaglia+Suite+G+minor+HWV+432" target="_blank" rel="noopener">
+      <div class="music-num">06</div>
+      <div class="music-body">
+        <div class="music-composer">George Frideric Handel</div>
+        <div class="music-title">Passacaglia in G minor</div>
+        <div class="music-detail">Suite HWV 432 · V. Passacaille<br>Variations over a ground bass that refuses to yield. Obstinacy turned into art.</div>
+      </div>
+      <div class="music-note">∞</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- LAPTOP STORY -->
+<section class="laptop-section">
+  <div class="laptop-eyebrow">Lost · NYC · 2026</div>
+  <h2 class="laptop-title">The Machine That Was</h2>
+  <div class="laptop-body">
+    <p>Sometime in 2026, a 16-inch MacBook Pro M4 Max disappeared somewhere in New York City.</p>
+    <p>8TB of storage. 128GB of unified memory. The M4 Max chip — Apple Silicon so advanced that engineers still debate its thermal architecture on forums at 2am. The most powerful consumer laptop ever manufactured at the time of its making. $8,000 of precision engineering, gone in the city that never sleeps.</p>
+    <p>With it: over 100 pages of original articles, essays, manuscripts — raw intellectual output that cannot be recreated. Ideas do not survive a second draft the same way they survived the first. The machine is replaceable. What lived on it is not.</p>
+    <p>The specs alone demand a moment of silence. The content deserves a eulogy.</p>
+  </div>
+  <div class="laptop-specs">
+    <span>M4 Max · 14-core CPU</span>
+    <span>40-core GPU</span>
+    <span>128 GB RAM</span>
+    <span>8 TB SSD</span>
+    <span>16-inch · $8,000</span>
+    <span>NYC · 2026</span>
   </div>
 </section>
 
