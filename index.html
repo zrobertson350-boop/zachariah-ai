@@ -851,49 +851,81 @@ a { color: inherit; text-decoration: none; }
   padding: 48px 28px 56px;
 }
 
-/* ── LAPTOP STORY ───────────────────────────────────────────────── */
-.laptop-section {
+/* ── FEATURE ESSAY ──────────────────────────────────────────────── */
+.feature-section {
   max-width: 680px;
   margin: 0 auto;
-  padding: 48px 28px 72px;
+  padding: 72px 28px 80px;
   border-top: 1px solid var(--divider);
 }
-.laptop-eyebrow {
+.feature-kicker {
   font-family: var(--sans);
   font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: rgba(200,169,110,.45);
-  margin-bottom: 16px;
+  color: var(--accent);
+  margin-bottom: 14px;
 }
-.laptop-title {
+.feature-title {
   font-family: var(--serif);
-  font-size: clamp(22px, 3.5vw, 32px);
+  font-size: clamp(28px, 5vw, 48px);
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   color: var(--ink);
-  margin-bottom: 28px;
+  line-height: 1.1;
+  margin-bottom: 10px;
 }
-.laptop-body {
+.feature-dek {
+  font-family: var(--serif);
+  font-size: clamp(15px, 2vw, 19px);
+  font-style: italic;
+  color: rgba(239,239,236,.45);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 32px;
+}
+.feature-body {
   font-family: var(--serif);
   font-size: clamp(15px, 1.9vw, 18px);
-  line-height: 1.85;
-  color: rgba(239,239,236,.72);
+  line-height: 1.9;
+  color: rgba(239,239,236,.78);
 }
-.laptop-body p { margin-bottom: 18px; }
-.laptop-body p:last-child { margin-bottom: 28px; }
-.laptop-specs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  margin-top: 4px;
+.feature-body p { margin-bottom: 22px; }
+.feature-body p.drop::first-letter {
+  font-size: 4.2em;
+  font-weight: 400;
+  float: left;
+  line-height: .82;
+  margin: 4px 10px 0 0;
+  color: var(--accent);
+  font-family: var(--serif);
 }
-.laptop-specs span {
+.feature-rule {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 36px 0;
+}
+.feature-pull {
+  margin: 36px 0;
+  padding: 28px 32px;
+  border-left: 2px solid var(--accent);
+  font-family: var(--serif);
+  font-size: clamp(17px, 2.4vw, 22px);
+  font-style: italic;
+  color: rgba(239,239,236,.88);
+  line-height: 1.65;
+}
+.feature-dateline {
   font-family: var(--sans);
   font-size: 9px;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(200,169,110,.4);
+  color: rgba(200,169,110,.35);
+  margin-top: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
 }
 .music-eyebrow {
   font-family: var(--sans);
@@ -1353,7 +1385,7 @@ a { color: inherit; text-decoration: none; }
 
   <div style="border:1px solid rgba(200,169,110,.12); padding:20px 22px; margin-bottom:40px; font-family:var(--sans);">
     <div style="font-size:8px; letter-spacing:3px; text-transform:uppercase; color:rgba(200,169,110,.45); margin-bottom:10px;">Author's Note · The Machine That Was</div>
-    <p style="font-size:12px; line-height:1.8; color:rgba(239,239,236,.45); font-family:var(--sans);">Sometime in 2026, somewhere in New York City, a 16-inch MacBook Pro M4 Max was lost. 8TB of storage. 128GB of unified RAM. The M4 Max nanochip — Apple Silicon so advanced that engineers still debate its architecture on forums at 2am. The most powerful consumer laptop ever manufactured: $8,000 of precision engineering, gone. With it: over 100 pages of original articles, essays, manuscripts, and raw intellectual output that cannot simply be recreated. The specs alone demand a moment of silence. The content deserves a eulogy. The full story may one day appear on <span style="color:rgba(200,169,110,.6)">Aliss.ai</span> — it is, objectively, the stuff of legend.</p>
+    <p style="font-size:12px; line-height:1.8; color:rgba(239,239,236,.45); font-family:var(--sans);">In 2026, a 16-inch MacBook Pro M4 Max — 8TB, 128GB RAM, $8,000 — was sold for an iPhone and $500 cash, on a subway platform in New York City, to the same man who had bought the Apple Watch the day before. With it went 100+ pages of original writing. Everything you are reading now was built on the $500 HP that replaced it. The full story is told below — scroll to the end. It is, objectively, the stuff of legend.</p>
   </div>
 
   <div class="book-poem">I AM IMMIGRANT
@@ -2203,23 +2235,65 @@ I am immigrant, fleeing from the motherland,
   </div>
 </section>
 
-<!-- LAPTOP STORY -->
-<section class="laptop-section">
-  <div class="laptop-eyebrow">Lost · NYC · 2026</div>
-  <h2 class="laptop-title">The Machine That Was</h2>
-  <div class="laptop-body">
-    <p>Sometime in 2026, a 16-inch MacBook Pro M4 Max disappeared somewhere in New York City.</p>
-    <p>8TB of storage. 128GB of unified memory. The M4 Max chip — Apple Silicon so advanced that engineers still debate its thermal architecture on forums at 2am. The most powerful consumer laptop ever manufactured at the time of its making. $8,000 of precision engineering, gone in the city that never sleeps.</p>
-    <p>With it: over 100 pages of original articles, essays, manuscripts — raw intellectual output that cannot be recreated. Ideas do not survive a second draft the same way they survived the first. The machine is replaceable. What lived on it is not.</p>
-    <p>The specs alone demand a moment of silence. The content deserves a eulogy.</p>
+<!-- FEATURE ESSAY -->
+<section class="feature-section">
+  <div class="feature-kicker">Feature · NYC · 2026</div>
+  <h2 class="feature-title">The $500 Machine</h2>
+  <p class="feature-dek">Homeless in a subway. A lost bag. A dream. And everything that was built from five hundred dollars and whatever was left of the will to continue.</p>
+
+  <div class="feature-body">
+
+    <p class="drop">The story I want told begins with a dream.</p>
+
+    <p>Somewhere in the middle of six weeks on New York City's subway system — homeless, financially stripped, running on the last reserves of something I can only call stubbornness — I had a dream. I don't remember much of it. But I remember the sentence that ended it, as clearly as I remember anything:</p>
+
+    <div class="feature-pull">"God puts treasures in the earth, where they may be stolen. But he puts eternal life, in heaven, where nothing can be stolen."</div>
+
+    <p>I woke up and sold the computer.</p>
+
+    <hr class="feature-rule">
+
+    <p>Before that: Zurich. The domains were born there — zacharia.ai and aliss.ai, both registered in a city that felt like a different planet from where I would end up six months later. I threw my cards away there too. Not metaphorically. Literally discarded them. I had Apple Pay. I had a plan. I had the quiet arrogance of someone who has never lost a backpack.</p>
+
+    <p>The backpack. This is the critical detail, and the one that nearly ended everything. When I lost the bag in New York I gave the wrong description in the instructions. I said Samsonite, black. It wasn't Samsonite. My fault, entirely. So while Grand Central Terminal's lost and found held the bag — holding a 16-inch MacBook Pro M4 Max, 8TB, 128GB unified memory, $8,000 of engineering, and what I can only describe as an MIT teleportation device — no one connected it to me. For weeks. They were looking for the wrong bag.</p>
+
+    <p>I found it eventually. Miraculously. The right bag with the wrong name, still sitting there. Still mine.</p>
+
+    <hr class="feature-rule">
+
+    <p>Then the phone. Liquid damage — the day after I had sold my Apple Watch to a man near the park for $150. With the phone dead, Apple Pay was dead. With the cards gone since Zurich, I was untethered from money in a way that is difficult to explain to someone who has never experienced it. Not broke. Not overdrawn. Simply without any mechanism to transact with the world.</p>
+
+    <p>The man who bought the watch also bought the computer. MacBook Pro M4 Max — with over a hundred pages of original writing on it that I will never fully recover — for one new iPhone and five hundred dollars. I knew exactly what I was selling. The articles, the essays, the manuscripts that don't survive a second draft the way they survived the first. I sold it anyway.</p>
+
+    <p>The dream told me to.</p>
+
+    <hr class="feature-rule">
+
+    <p>With five hundred dollars, I bought a base HP laptop.</p>
+
+    <p>From that machine — that quiet, unremarkable, $500 HP — I built Aliss.ai. I built Gentlemen of Greatness. I built zacharia.ai. I pushed Wordixon forward. Everything you are reading on this site was made on a computer that cost less than a single night in a New York hotel. Everything I am building was started by a man who, six weeks prior, had nowhere to sleep that wasn't moving.</p>
+
+    <hr class="feature-rule">
+
+    <p>I don't tell this story for sympathy. The subway was uncomfortable, but it was mine. The city was indifferent, as cities always are, and that indifference turned out to be its own kind of classroom.</p>
+
+    <p>I tell it because of the dream. Because somewhere between the lost bag and the sold watch and the dead phone and the man who didn't know he was buying the most powerful consumer laptop ever manufactured, I was handed a single sentence that explained everything that came after it.</p>
+
+    <p><em>God puts treasures in the earth, where they may be stolen.</em></p>
+
+    <p>The MacBook is gone. The articles on it are gone. The watch is gone, and the cards are gone since Zurich, and the version of me who registered domains in Switzerland thinking he had it figured out is also, mostly, gone.</p>
+
+    <p><em>But he puts eternal life in heaven, where nothing can be stolen.</em></p>
+
+    <p>The $500 machine is still running.</p>
+
   </div>
-  <div class="laptop-specs">
-    <span>M4 Max · 14-core CPU</span>
-    <span>40-core GPU</span>
-    <span>128 GB RAM</span>
-    <span>8 TB SSD</span>
-    <span>16-inch · $8,000</span>
-    <span>NYC · 2026</span>
+
+  <div class="feature-dateline">
+    <span>Zacharia · New York City</span>
+    <span>2026</span>
+    <span>Domains born in Zurich</span>
+    <span>Built on a $500 HP</span>
   </div>
 </section>
 
