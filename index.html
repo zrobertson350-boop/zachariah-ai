@@ -195,11 +195,7 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 40px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .6s ease, transform .6s ease;
 }
-.section-eyebrow.visible { opacity: 1; transform: translateY(0); }
 
 .work-list {
   list-style: none;
@@ -208,11 +204,7 @@ a { color: inherit; text-decoration: none; }
 
 .work-item {
   border-bottom: 1px solid var(--divider);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .5s ease, transform .5s ease;
 }
-.work-item.visible { opacity: 1; transform: translateY(0); }
 
 .work-item a {
   display: flex;
@@ -264,11 +256,7 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 0;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .6s ease, transform .6s ease;
 }
-.links-grid.visible { opacity: 1; transform: translateY(0); }
 
 .link-pill {
   display: inline-flex;
@@ -583,10 +571,10 @@ a { color: inherit; text-decoration: none; }
 
 <!-- WORK -->
 <section class="work" id="work">
-  <div class="section-eyebrow reveal-item">What I'm working on</div>
+  <div class="section-eyebrow">What I'm working on</div>
   <ul class="work-list">
 
-    <li class="work-item reveal-item" style="--d:.05s">
+    <li class="work-item">
       <a href="https://www.wordixon.com" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">Wordixon</span>
@@ -596,7 +584,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.1s">
+    <li class="work-item">
       <a href="https://www.aliss.ai" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">Aliss.ai</span>
@@ -606,7 +594,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.15s">
+    <li class="work-item">
       <a href="https://www.gentlemenofgreatness.com" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">Gentlemen of Greatness</span>
@@ -616,7 +604,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.2s">
+    <li class="work-item">
       <a href="https://www.youtube.com/@zachkrob" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">Zachariah — YouTube</span>
@@ -626,7 +614,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.25s">
+    <li class="work-item">
       <a href="https://www.youtube.com/@genzach4989" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">GenZach — YouTube</span>
@@ -636,7 +624,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.3s">
+    <li class="work-item">
       <a href="https://github.com/zrobertson350-boop" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">GitHub</span>
@@ -646,7 +634,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.35s">
+    <li class="work-item">
       <a href="https://instagram.com/zachkrob" target="_blank" rel="noopener">
         <div class="work-left">
           <span class="work-name">Instagram</span>
@@ -656,7 +644,7 @@ a { color: inherit; text-decoration: none; }
       </a>
     </li>
 
-    <li class="work-item reveal-item" style="--d:.4s">
+    <li class="work-item">
       <a href="mailto:zrobertson350@gmail.com">
         <div class="work-left">
           <span class="work-name">Email</span>
@@ -671,8 +659,8 @@ a { color: inherit; text-decoration: none; }
 
 <!-- LINKS -->
 <section class="links" id="links">
-  <div class="section-eyebrow reveal-item">Find me</div>
-  <div class="links-grid reveal-item">
+  <div class="section-eyebrow">Find me</div>
+  <div class="links-grid">
 
     <a class="link-pill" href="https://github.com/zrobertson350-boop" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 6.1 18 6.4 18 6.4c.7 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
@@ -700,7 +688,7 @@ a { color: inherit; text-decoration: none; }
 <!-- CV -->
 <section class="cv" id="cv">
 
-  <div class="cv-masthead reveal-item">
+  <div class="cv-masthead">
     <div class="cv-title-block">
       <span class="cv-overline">A Record of Building</span>
       <div class="cv-name">Zacharia</div>
@@ -714,7 +702,7 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 
-  <div class="cv-grid reveal-item">
+  <div class="cv-grid">
     <div class="cv-block">
       <div class="cv-block-label">Focus</div>
       <div class="cv-tags">
@@ -748,10 +736,10 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 
-  <div class="cv-section-label reveal-item">Work &amp; Projects</div>
+  <div class="cv-section-label">Work &amp; Projects</div>
   <div class="cv-timeline">
 
-    <div class="cv-entry reveal-item">
+    <div class="cv-entry">
       <div class="cv-entry-year">2025 —</div>
       <div>
         <div class="cv-entry-sub">Autonomous AI Publication</div>
@@ -761,7 +749,7 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <div class="cv-entry reveal-item">
+    <div class="cv-entry">
       <div class="cv-entry-year">2024 —</div>
       <div>
         <div class="cv-entry-sub">Language Learning Platform</div>
@@ -771,7 +759,7 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <div class="cv-entry reveal-item">
+    <div class="cv-entry">
       <div class="cv-entry-year">2023 —</div>
       <div>
         <div class="cv-entry-sub">Men's Self-Improvement Media</div>
@@ -781,7 +769,7 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    <div class="cv-entry reveal-item">
+    <div class="cv-entry">
       <div class="cv-entry-year">Ongoing</div>
       <div>
         <div class="cv-entry-sub">Content / YouTube</div>
@@ -796,10 +784,10 @@ a { color: inherit; text-decoration: none; }
 
   </div>
 
-  <div class="cv-section-label reveal-item">Education</div>
+  <div class="cv-section-label">Education</div>
   <div class="cv-timeline">
 
-    <div class="cv-entry reveal-item">
+    <div class="cv-entry">
       <div class="cv-entry-year">Current</div>
       <div>
         <div class="cv-entry-sub">Law</div>
@@ -810,7 +798,7 @@ a { color: inherit; text-decoration: none; }
 
   </div>
 
-  <div class="cv-philosophy reveal-item">
+  <div class="cv-philosophy">
     "The limits of my language mean the limits of my world. I am trying to build past those limits — one product, one word, one model at a time."
     <cite>— Zacharia &nbsp;·&nbsp; 2026</cite>
   </div>
@@ -958,26 +946,6 @@ a { color: inherit; text-decoration: none; }
   setTimeout(tick, 500);
 })();
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────────
-(function(){
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        const d = e.target.style.getPropertyValue('--d') || '0s';
-        e.target.style.transitionDelay = d;
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(14px)';
-    el.style.transition = 'opacity .55s ease, transform .55s ease';
-    obs.observe(el);
-  });
-})();
 </script>
 </body>
 </html>
