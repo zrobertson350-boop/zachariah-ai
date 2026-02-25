@@ -42,7 +42,19 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
   padding: 80px 28px 120px;
   position: relative;
+  overflow: hidden;
 }
+
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > *:not(#heroCanvas) { position: relative; z-index: 1; }
 
 .hero-name {
   font-family: var(--serif);
@@ -285,12 +297,253 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 580px) {
   .work, .links { padding-left: 20px; padding-right: 20px; }
 }
+
+/* ── CV ──────────────────────────────────────────────── */
+.cv {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 100px 28px 120px;
+}
+
+.cv-masthead {
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  padding: 28px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.cv-title-block { display: flex; flex-direction: column; gap: 6px; }
+
+.cv-overline {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cv-name {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.cv-descriptor {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.5;
+  max-width: 340px;
+}
+
+.cv-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .5px;
+  text-align: right;
+}
+
+.cv-meta a { color: var(--accent); }
+.cv-meta a:hover { text-decoration: underline; }
+
+/* CV GRID */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--divider);
+  border: 1px solid var(--divider);
+  margin-bottom: 64px;
+}
+
+.cv-block {
+  background: #141414;
+  padding: 28px 26px;
+}
+
+.cv-block-label {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cv-block-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--divider);
+}
+
+.cv-block p {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(239,239,236,.65);
+  line-height: 1.7;
+}
+
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.cv-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border: 1px solid var(--divider);
+  color: rgba(239,239,236,.5);
+  text-transform: uppercase;
+}
+
+/* TIMELINE */
+.cv-section-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cv-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--divider);
+}
+
+.cv-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 64px;
+  border-top: 1px solid var(--divider);
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--divider);
+  align-items: start;
+}
+
+.cv-entry-year {
+  font-family: 'EB Garamond', serif;
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 3px;
+  letter-spacing: 1px;
+}
+
+.cv-entry-title {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2.5vw, 22px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.cv-entry-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.cv-entry-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(239,239,236,.55);
+  line-height: 1.65;
+}
+
+.cv-entry-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid rgba(200,169,110,.3);
+  padding-bottom: 1px;
+  transition: border-color .2s;
+}
+
+.cv-entry-link:hover { border-color: var(--accent); }
+
+/* Philosophy */
+.cv-philosophy {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(239,239,236,.7);
+  max-width: 680px;
+  padding: 48px 0;
+  border-top: 1px solid var(--divider);
+  margin-top: 32px;
+}
+
+.cv-philosophy cite {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 18px;
+}
+
+@media (max-width: 700px) {
+  .cv-grid { grid-template-columns: 1fr; }
+  .cv-masthead { flex-direction: column; gap: 16px; }
+  .cv-meta { align-items: flex-start; text-align: left; }
+  .cv-entry { grid-template-columns: 70px 1fr; gap: 0 16px; }
+}
+
+@media print {
+  body { background: #fff; color: #111; }
+  .hero, .work, .links, .signoff, #heroCanvas { display: none !important; }
+  .cv { padding: 20px; max-width: 100%; }
+  .cv-block { background: #f9f9f9; }
+  a { color: inherit; }
+}
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <div class="hero">
+  <canvas id="heroCanvas"></canvas>
   <div class="hero-name" id="heroName"><span class="cursor typing" id="cursor"></span></div>
 
   <blockquote class="hero-quote" id="heroQuote">
@@ -397,7 +650,132 @@ a { color: inherit; text-decoration: none; }
       Email
     </a>
 
+    <a class="link-pill" href="#cv" onclick="document.getElementById('cv').scrollIntoView({behavior:'smooth'});return false;">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15h8v1H8zm0-3h8v1H8zm0-3h5v1H8z"/></svg>
+      CV
+    </a>
+
   </div>
+</section>
+
+<!-- CV -->
+<section class="cv" id="cv">
+
+  <div class="cv-masthead reveal-item">
+    <div class="cv-title-block">
+      <span class="cv-overline">A Record of Building</span>
+      <div class="cv-name">Zacharia</div>
+      <p class="cv-descriptor">Builder at the intersection of AI, language, and meaning. Law student. Founder of three ventures. Maker of things that didn't exist before.</p>
+    </div>
+    <div class="cv-meta">
+      <span>zacharia.ai</span>
+      <a href="mailto:hello@zacharia.ai">hello@zacharia.ai</a>
+      <a href="https://github.com/zrobertson350-boop" target="_blank" rel="noopener">github.com/zrobertson350-boop</a>
+      <span>@zachkrob</span>
+    </div>
+  </div>
+
+  <div class="cv-grid reveal-item">
+    <div class="cv-block">
+      <div class="cv-block-label">Focus</div>
+      <div class="cv-tags">
+        <span class="cv-tag">AI Systems</span>
+        <span class="cv-tag">LLMs</span>
+        <span class="cv-tag">Language</span>
+        <span class="cv-tag">Media</span>
+        <span class="cv-tag">Law</span>
+        <span class="cv-tag">Meaning</span>
+        <span class="cv-tag">Product</span>
+        <span class="cv-tag">Self-Improvement</span>
+      </div>
+    </div>
+    <div class="cv-block">
+      <div class="cv-block-label">Stack</div>
+      <div class="cv-tags">
+        <span class="cv-tag">Node.js</span>
+        <span class="cv-tag">Next.js</span>
+        <span class="cv-tag">React</span>
+        <span class="cv-tag">Expo</span>
+        <span class="cv-tag">Supabase</span>
+        <span class="cv-tag">Claude API</span>
+        <span class="cv-tag">Socket.io</span>
+        <span class="cv-tag">Render</span>
+        <span class="cv-tag">Vercel</span>
+      </div>
+    </div>
+    <div class="cv-block">
+      <div class="cv-block-label">In Brief</div>
+      <p>Self-taught builder. I learn by shipping. Three live products, two YouTube channels, one law degree in progress. I believe the most important problems sit where disciplines collide.</p>
+    </div>
+  </div>
+
+  <div class="cv-section-label reveal-item">Work &amp; Projects</div>
+  <div class="cv-timeline">
+
+    <div class="cv-entry reveal-item">
+      <div class="cv-entry-year">2025 —</div>
+      <div>
+        <div class="cv-entry-sub">Autonomous AI Publication</div>
+        <div class="cv-entry-title">Aliss.ai</div>
+        <div class="cv-entry-desc">The world's first fully autonomous AI news publication. Every article researched, written, and published by AI — in real time, around the clock. Covers the AI arms race with a clear editorial identity. Built on Node.js, Claude API, Supabase, and Socket.io.</div>
+        <a class="cv-entry-link" href="https://www.aliss.ai" target="_blank" rel="noopener">www.aliss.ai ↗</a>
+      </div>
+    </div>
+
+    <div class="cv-entry reveal-item">
+      <div class="cv-entry-year">2024 —</div>
+      <div>
+        <div class="cv-entry-sub">Language Learning Platform</div>
+        <div class="cv-entry-title">Wordixon</div>
+        <div class="cv-entry-desc">A video-first language learning platform built for the way people actually learn — short, sharp, social. Web app (Next.js) and mobile app (Expo/React Native). Powered by AI vocabulary generation and Supabase.</div>
+        <a class="cv-entry-link" href="https://www.wordixon.com" target="_blank" rel="noopener">www.wordixon.com ↗</a>
+      </div>
+    </div>
+
+    <div class="cv-entry reveal-item">
+      <div class="cv-entry-year">2023 —</div>
+      <div>
+        <div class="cv-entry-sub">Men's Self-Improvement Media</div>
+        <div class="cv-entry-title">Gentlemen of Greatness</div>
+        <div class="cv-entry-desc">A media brand for men who take their development seriously. Content covering discipline, philosophy, relationships, and the examined life. Built an audience from zero.</div>
+        <a class="cv-entry-link" href="https://www.gentlemenofgreatness.com" target="_blank" rel="noopener">gentlemenofgreatness.com ↗</a>
+      </div>
+    </div>
+
+    <div class="cv-entry reveal-item">
+      <div class="cv-entry-year">Ongoing</div>
+      <div>
+        <div class="cv-entry-sub">Content / YouTube</div>
+        <div class="cv-entry-title">Zachariah &amp; GenZach</div>
+        <div class="cv-entry-desc">Two channels. <em>Zachariah</em> — lifestyle, conversation, AI insight. <em>GenZach</em> — study-with-me format, documenting the process of learning in public.</div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px">
+          <a class="cv-entry-link" href="https://www.youtube.com/@zachkrob" target="_blank" rel="noopener">@zachkrob ↗</a>
+          <a class="cv-entry-link" href="https://www.youtube.com/@genzach4989" target="_blank" rel="noopener">@genzach4989 ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cv-section-label reveal-item">Education</div>
+  <div class="cv-timeline">
+
+    <div class="cv-entry reveal-item">
+      <div class="cv-entry-year">Current</div>
+      <div>
+        <div class="cv-entry-sub">Law</div>
+        <div class="cv-entry-title">Law School</div>
+        <div class="cv-entry-desc">Studying law with a focus on emerging technology, language, and regulatory frameworks at the frontier of AI. Research interest: the legal and philosophical status of AI-generated expression.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cv-philosophy reveal-item">
+    "The limits of my language mean the limits of my world. I am trying to build past those limits — one product, one word, one model at a time."
+    <cite>— Zacharia &nbsp;·&nbsp; 2026</cite>
+  </div>
+
 </section>
 
 <!-- SIGN-OFF -->
@@ -406,6 +784,73 @@ a { color: inherit; text-decoration: none; }
 </footer>
 
 <script>
+// ── PARTICLE CONSTELLATION ───────────────────────────────────────
+(function(){
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles;
+  const N = 55, MAX_DIST = 130;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function makeParticle() {
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.28,
+      vy: (Math.random() - 0.5) * 0.28,
+      r: Math.random() * 1.5 + 0.5,
+      a: Math.random() * 0.35 + 0.1
+    };
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({length: N}, makeParticle);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // Draw connections
+    for (let i = 0; i < N; i++) {
+      for (let j = i + 1; j < N; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < MAX_DIST) {
+          const alpha = (1 - d / MAX_DIST) * 0.12;
+          ctx.strokeStyle = `rgba(200,169,110,${alpha})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    // Draw dots
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,169,110,${p.a})`;
+      ctx.fill();
+      // Move
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); });
+  init();
+  draw();
+})();
+
 // ── TYPING ANIMATION ──────────────────────────────────────────────
 (function(){
   const nameEl  = document.getElementById('heroName');
