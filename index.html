@@ -26,6 +26,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
+  font-size: 18px;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -82,13 +83,13 @@ a { color: inherit; text-decoration: none; }
 
 /* Wittgenstein quote */
 .hero-quote {
-  margin-top: 36px;
+  margin-top: 40px;
   font-family: var(--serif);
-  font-size: clamp(15px, 2vw, 19px);
+  font-size: clamp(18px, 2.4vw, 24px);
   font-style: italic;
-  color: var(--muted);
-  line-height: 1.65;
-  max-width: 560px;
+  color: rgba(239,239,236,.5);
+  line-height: 1.7;
+  max-width: 620px;
   opacity: 0;
   transform: translateY(6px);
   transition: opacity .8s ease .3s, transform .8s ease .3s;
@@ -96,19 +97,19 @@ a { color: inherit; text-decoration: none; }
 .hero-quote.visible { opacity: 1; transform: translateY(0); }
 .hero-quote-attr {
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
   font-style: normal;
-  font-size: 12px;
+  font-size: 11px;
   font-family: var(--sans);
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: rgba(200,169,110,.5);
+  color: rgba(200,169,110,.45);
 }
 
 /* Greeting */
 .hero-greeting {
-  margin-top: 44px;
-  max-width: 600px;
+  margin-top: 48px;
+  max-width: 660px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity .8s ease .5s, transform .8s ease .5s;
@@ -118,27 +119,29 @@ a { color: inherit; text-decoration: none; }
 
 .greeting-hellos {
   font-family: var(--serif);
-  font-size: clamp(17px, 2.2vw, 22px);
+  font-size: clamp(20px, 2.8vw, 28px);
   color: var(--ink);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   line-height: 1.5;
+  letter-spacing: 1px;
 }
 .greeting-hellos .lang { color: var(--accent); }
 
 .greeting-body {
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(239,239,236,.55);
-  line-height: 1.75;
-  margin-bottom: 18px;
+  font-family: var(--serif);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 400;
+  color: rgba(239,239,236,.6);
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
-.greeting-body em { color: rgba(239,239,236,.8); font-style: normal; }
+.greeting-body em { color: rgba(239,239,236,.9); font-style: italic; }
 
 .greeting-invite {
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: clamp(18px, 2.2vw, 22px);
   font-style: italic;
-  color: rgba(200,169,110,.7);
+  color: rgba(200,169,110,.75);
 }
 
 /* scroll cue */
@@ -222,14 +225,14 @@ a { color: inherit; text-decoration: none; }
 
 .work-name {
   font-family: var(--serif);
-  font-size: clamp(18px, 2.5vw, 23px);
+  font-size: clamp(22px, 3vw, 28px);
   font-weight: 400;
   color: var(--ink);
   line-height: 1.2;
 }
 
 .work-sub {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 300;
   color: var(--muted);
   letter-spacing: .5px;
