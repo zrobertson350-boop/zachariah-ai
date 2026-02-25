@@ -843,6 +843,90 @@ a { color: inherit; text-decoration: none; }
   .cv-block { background: #f9f9f9; }
   a { color: inherit; }
 }
+
+/* ── MUSIC ─────────────────────────────────────────────────────── */
+.music-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 72px 28px 56px;
+}
+.music-eyebrow {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,.45);
+  margin-bottom: 18px;
+}
+.music-heading {
+  font-family: var(--serif);
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 400;
+  color: rgba(239,239,236,.55);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.music-track {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: start;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(200,169,110,.08);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s;
+}
+.music-track:first-child { border-top: 1px solid rgba(200,169,110,.08); }
+.music-track:hover .music-num { color: rgba(200,169,110,.8); }
+.music-track:hover .music-title { color: rgba(239,239,236,.95); }
+.music-num {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: rgba(200,169,110,.3);
+  letter-spacing: 1px;
+  padding-top: 3px;
+  transition: color .15s;
+}
+.music-body {}
+.music-composer {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,.5);
+  margin-bottom: 5px;
+}
+.music-title {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(239,239,236,.8);
+  line-height: 1.4;
+  transition: color .15s;
+  font-style: italic;
+}
+.music-detail {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: rgba(239,239,236,.28);
+  margin-top: 5px;
+  line-height: 1.5;
+}
+.music-note {
+  font-family: var(--sans);
+  font-size: 9px;
+  color: rgba(200,169,110,.4);
+  letter-spacing: 1px;
+  text-align: right;
+  padding-top: 3px;
+  white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -2018,6 +2102,58 @@ I am immigrant, fleeing from the motherland,
   <img src="saturn.jpg" alt="">
   <div class="saturn-vignette"></div>
 </div>
+
+<!-- MUSIC -->
+<section class="music-section">
+  <div class="music-eyebrow">Listening</div>
+  <p class="music-heading">
+    Four pieces I return to. Not for background noise — for architecture.
+    Music that argues something.
+  </p>
+  <div class="music-list">
+
+    <a class="music-track" href="https://www.youtube.com/results?search_query=Bach+Air+on+G+String+Suite+No+3" target="_blank" rel="noopener">
+      <div class="music-num">01</div>
+      <div class="music-body">
+        <div class="music-composer">Johann Sebastian Bach</div>
+        <div class="music-title">Air on the G String</div>
+        <div class="music-detail">Suite No. 3 in D major, BWV 1068 · II. Air<br>Slow, inevitable, and completely without vanity.</div>
+      </div>
+      <div class="music-note">∞</div>
+    </a>
+
+    <a class="music-track" href="https://www.youtube.com/results?search_query=Beethoven+Symphony+7+2nd+Movement+Allegretto" target="_blank" rel="noopener">
+      <div class="music-num">02</div>
+      <div class="music-body">
+        <div class="music-composer">Ludwig van Beethoven</div>
+        <div class="music-title">Symphony No. 7 · II. Allegretto</div>
+        <div class="music-detail">Op. 92 in A major · Second Movement<br>A funeral march that refuses to be sad. Relentless in the best possible sense.</div>
+      </div>
+      <div class="music-note">∞</div>
+    </a>
+
+    <a class="music-track" href="https://www.youtube.com/results?search_query=Tchaikovsky+Piano+Concerto+No+1+B+flat+minor+opening" target="_blank" rel="noopener">
+      <div class="music-num">03</div>
+      <div class="music-body">
+        <div class="music-composer">Pyotr Ilyich Tchaikovsky</div>
+        <div class="music-title">Piano Concerto No. 1 in B♭ minor · I. Allegro</div>
+        <div class="music-detail">Op. 23 · First movement, opening 90 seconds<br>The most confident entrance in all of classical music. No warm-up. No apology. Just arrival.</div>
+      </div>
+      <div class="music-note">0:00 – 1:30</div>
+    </a>
+
+    <a class="music-track" href="https://www.youtube.com/results?search_query=Mozart+best+classical+music" target="_blank" rel="noopener">
+      <div class="music-num">04</div>
+      <div class="music-body">
+        <div class="music-composer">Wolfgang Amadé Mozart</div>
+        <div class="music-title">Anything.</div>
+        <div class="music-detail">1756 – 1791 · Everything he touched<br>The only composer who makes you feel like the universe was briefly in a good mood.</div>
+      </div>
+      <div class="music-note">∞</div>
+    </a>
+
+  </div>
+</section>
 
 <!-- SIGN-OFF -->
 <footer class="signoff">
