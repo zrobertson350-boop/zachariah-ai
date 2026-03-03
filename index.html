@@ -2320,15 +2320,21 @@ I am immigrant, fleeing from the motherland,
   var input = document.getElementById('passwordInput');
   var btn = document.getElementById('passwordSubmit');
   var err = document.getElementById('passwordError');
-  var PASS = 'gofuckyourself';
+  var HASH = '420c07f18a50de5f85a7a4f0a2d4f1c58f1baa0e7596092cce90ac446427dfa8';
+
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+  }
 
   if (sessionStorage.getItem('zach_unlocked') === '1') {
     gate.style.display = 'none';
     content.style.display = 'block';
   }
 
-  function attempt() {
-    if (input.value === PASS) {
+  async function attempt() {
+    var h = await sha256(input.value);
+    if (h === HASH) {
       sessionStorage.setItem('zach_unlocked', '1');
       gate.style.display = 'none';
       content.style.display = 'block';
